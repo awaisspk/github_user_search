@@ -1,0 +1,5 @@
+schema:
+  - https://api.github.com/graphql
+      headers:
+        Authorization: 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
+documents: 'src/lib/utils/a.graphql'

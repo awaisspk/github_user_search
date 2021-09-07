@@ -1,5 +1,11 @@
 {
   "compilerOptions": {
+    "baseUrl": "src",
+    "paths": {
+      "@components/*": ["components/*"],
+      "@interface/*": ["lib/interface/*"],
+      "@pages/*": ["../pages/*"]
+    },
     "target": "es5",
     "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
@@ -8,7 +14,8 @@
     "forceConsistentCasingInFileNames": true,
     "noEmit": true,
     "esModuleInterop": true,
-    "module": "esnext",
+    "module": "ESNext",
+    "noImplicitAny": false,
     "moduleResolution": "node",
     "resolveJsonModule": true,
     "isolatedModules": true,
