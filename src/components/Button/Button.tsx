@@ -28,7 +28,7 @@ interface IButton {
   type: 'button' | 'reset' | 'submit' | undefined
 }
 
-const Button = React.forwardRef(({ children, type }: IButton) => {
+const Button = ({ children, type }: IButton) => {
   return (
     <>
       <StyledButton
@@ -42,6 +42,6 @@ const Button = React.forwardRef(({ children, type }: IButton) => {
       </StyledButton>
     </>
   )
-})
+}
 
 export { Button }

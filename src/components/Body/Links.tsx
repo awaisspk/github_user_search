@@ -46,21 +46,21 @@ const Links = ({ location, website, twitter, github }: ILink) => {
 
       <Item>
         <WebsiteLogo />
-        <a href={website} target="_blank">
+        <a href={website} target="_blank" rel="noreferrer">
           {website}
         </a>
       </Item>
 
       <Item>
         <TwitterLogo />
-        <a href={twitter} target="_blank">
+        <a href={twitter} target="_blank" rel="noreferrer">
           {twitter}
         </a>
       </Item>
 
       <Item>
         <GithubLogo />
-        <a href={github} target="_blank">
+        <a href={github} target="_blank" rel="noreferrer">
           @github
         </a>
       </Item>
