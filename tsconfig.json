@@ -1,10 +1,12 @@
 {
   "compilerOptions": {
-    "baseUrl": "src",
+    "baseUrl": ".",
     "paths": {
-      "@components/*": ["components/*"],
-      "@interface/*": ["lib/interface/*"],
-      "@pages/*": ["../pages/*"]
+      "@components/*": ["src/components/*"],
+      "@interface/*": ["src/lib/interface/*"],
+      "@pages/*": [".src/pages/*"],
+      "@stitchesConfig": ["./styles/stitches.config.ts"],
+      "@lib/*": ["./src/lib/*"]
     },
     "target": "es5",
     "lib": ["dom", "dom.iterable", "esnext"],
