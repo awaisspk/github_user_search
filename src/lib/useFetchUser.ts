@@ -45,3 +45,26 @@ function useFetchUser(user: string) {
 }
 
 export { useFetchUser }
+
+// {
+//   user(login: "awaisspk") {
+//     name
+//     bio
+//     avatarUrl
+//     createdAt
+//     location
+//     twitterUsername
+//     websiteUrl
+//     login
+
+//     followers {
+//       totalCount
+//     }
+//     following {
+//       totalCount
+//     }
+//     repositories {
+// 		totalCount
+//     }
+//   }
+// }
