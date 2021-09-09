@@ -9,6 +9,13 @@ const StyledButton = styled(motion.button, {
   border: '0',
   borderRadius: '$lg',
   cursor: 'pointer',
+  variants: {
+    loading: {
+      true: {
+        backgroundColor: 'Blue',
+      },
+    },
+  },
 })
 
 const buttonVarients = {
@@ -26,9 +33,10 @@ const buttonVarients = {
 interface IButton {
   children: ReactNode
   type: 'button' | 'reset' | 'submit' | undefined
+  loading: boolean
 }
 
-const Button = ({ children, type }: IButton) => {
+const Button = ({ children, type, loading }: IButton) => {
   return (
     <>
       <StyledButton
@@ -37,6 +45,7 @@ const Button = ({ children, type }: IButton) => {
         whileHover="hover"
         whileTap="tap"
         type={type}
+        loading={loading}
       >
         {children}
       </StyledButton>

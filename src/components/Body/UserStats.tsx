@@ -1,10 +1,5 @@
 import { styled } from '@stitchesConfig'
-
-interface IStats {
-  repo: number
-  follower: number
-  following: number
-}
+import { Idata } from 'src/types/Idata'
 
 const Flex = styled('div', {
   backgroundColor: '$body',
@@ -17,22 +12,22 @@ const Column = styled('div', {
   fontSize: 'medium',
 })
 
-const UserStats = ({ repo, follower, following }: IStats) => {
+const UserStats = ({ user }: Idata) => {
   return (
     <Flex>
       <Column>
         <p>Repos</p>
-        <p>{repo}</p>
+        <p>{user.repositories.totalCount}</p>
       </Column>
 
       <Column>
         <p>Followers</p>
-        <p>{follower}</p>
+        <p>{user.followers.totalCount}</p>
       </Column>
 
       <Column>
         <p>Following</p>
-        <p>{following}</p>
+        <p>{user.following.totalCount}</p>
       </Column>
     </Flex>
   )

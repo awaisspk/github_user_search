@@ -1,70 +1,55 @@
 import { GraphQLClient, gql } from 'graphql-request'
 import { useQuery } from 'react-query'
-
-interface Idata {
-  user: {
-    name: string
-    login: string
-    bio: string
-  }
-}
+import { Idata } from '../types/Idata'
 
 const endpoint = 'https://api.github.com/graphql'
 
-function useFetchUser(user: string) {
-  const graphQLClient = new GraphQLClient(endpoint, {
+function useFetchUser(dev: string) {
+  const client = new GraphQLClient(endpoint, {
     headers: {
-      authorization: `Bearer ${process.env.NEXT_PUBLIC_GITHUB_TOKEN}`,
+      authorization: `bearer ${process.env.NEXT_PUBLIC_GITHUB_TOKEN}`,
     },
   })
 
-  const QUser = gql`
+  const query = gql`
     query ($username: String!) {
       user(login: $username) {
         name
-        login
         bio
+        avatarUrl
+        createdAt
+        location
+        twitterUsername
+        websiteUrl
+        login
+
+        followers {
+          totalCount
+        }
+        following {
+          totalCount
+        }
+        repositories {
+          totalCount
+        }
       }
     }
   `
 
   const variables = {
-    username: user,
+    username: dev,
   }
 
   return useQuery(
-    ['post', user],
+    ['dev', dev],
     async () => {
-      const { user }: Idata = await graphQLClient.request(QUser, variables)
+      const { user }: Idata = await client.request(query, variables)
       return user
     },
     {
-      enabled: !!user,
+      enabled: !!dev,
     }
   )
 }
 
 export { useFetchUser }
-
-// {
-//   user(login: "awaisspk") {
-//     name
-//     bio
-//     avatarUrl
-//     createdAt
-//     location
-//     twitterUsername
-//     websiteUrl
-//     login
-
-//     followers {
-//       totalCount
-//     }
-//     following {
-//       totalCount
-//     }
-//     repositories {
-// 		totalCount
-//     }
-//   }
-// }

@@ -1,6 +1,7 @@
 import { DarkTheme, styled } from '@stitchesConfig'
 import { SearchLogo } from 'src/Logo/SearchLogo'
 import { Button } from '@components/Button/Button'
+import { ChangeEvent, SetStateAction } from 'react'
 
 const Container = styled('div', {
   display: 'flex',
@@ -33,13 +34,27 @@ const StyledInput = styled('input', {
   width: '100%',
 })
 
-const SearchBox = () => {
+type IUser = {
+  username: string
+  handleChange: (e: ChangeEvent<HTMLInputElement>) => void
+  handleSubmit: (e: React.SyntheticEvent<HTMLFormElement>) => void
+  loadingStatus: boolean
+}
+
+const SearchBox = ({
+  username,
+  handleChange,
+  handleSubmit,
+  loadingStatus,
+}: IUser) => {
   return (
     <Container>
       <SearchLogo />
-      <StyledForm onSubmit={(e) => e.preventDefault()}>
-        <StyledInput type="text" />
-        <Button type="submit">Search</Button>
+      <StyledForm onSubmit={handleSubmit}>
+        <StyledInput type="text" value={username} onChange={handleChange} />
+        <Button type="submit" loading={loadingStatus}>
+          Search
+        </Button>
       </StyledForm>
     </Container>
   )

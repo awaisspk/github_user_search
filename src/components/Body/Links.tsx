@@ -3,13 +3,8 @@ import GithubLogo from 'src/Logo/GithubLogo'
 import LocationLogo from 'src/Logo/LocationLogo'
 import TwitterLogo from 'src/Logo/TwitterLogo'
 import WebsiteLogo from 'src/Logo/WebsiteLogo'
+import { Idata } from 'src/types/Idata'
 
-interface ILink {
-  location: string
-  website: string
-  twitter: string
-  github: string
-}
 const Grid = styled('div', {
   display: 'grid',
   gridTemplateColumns: '1fr',
@@ -36,31 +31,35 @@ const Item = styled('div', {
   },
 })
 
-const Links = ({ location, website, twitter, github }: ILink) => {
+const Links = ({ user }: Idata) => {
   return (
     <Grid>
       <Item>
         <LocationLogo />
-        <p>{location}</p>
+        <p>{user.location ? user.location : 'Mars'}</p>
       </Item>
 
       <Item>
         <WebsiteLogo />
-        <a href={website} target="_blank" rel="noreferrer">
-          {website}
+        <a href={user.websiteUrl} target="_blank" rel="noreferrer">
+          {user.websiteUrl ? user.websiteUrl : 'not Found'}
         </a>
       </Item>
 
       <Item>
         <TwitterLogo />
-        <a href={twitter} target="_blank" rel="noreferrer">
-          {twitter}
+        <a href={user.twitterUsername} target="_blank" rel="noreferrer">
+          {user.twitterUsername ? user.twitterUsername : 'not Found'}
         </a>
       </Item>
 
       <Item>
         <GithubLogo />
-        <a href={github} target="_blank" rel="noreferrer">
+        <a
+          href={`https://github.com/${user.login}`}
+          target="_blank"
+          rel="noreferrer"
+        >
           @github
         </a>
       </Item>

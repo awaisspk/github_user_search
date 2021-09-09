@@ -2,6 +2,7 @@ import User from './User'
 import { DarkTheme, styled } from '@stitchesConfig'
 import UserStats from './UserStats'
 import Links from './Links'
+import { Idata } from '../../types/Idata'
 
 interface IUser {
   name: string
@@ -24,22 +25,12 @@ const Container = styled('div', {
   },
 })
 
-const DisplayResults = () => {
+const DisplayResults = ({ user }: Idata) => {
   return (
     <Container>
-      <User
-        name="awais iqbal"
-        bio="software engineer"
-        login="awaisspk"
-        joined="25 Jan 2020"
-      />
-      <UserStats follower={3000} following={8} repo={30} />
-      <Links
-        github="https://github.com/awaisspk"
-        website="https://stitches-red.vercel.app/"
-        location="Lahore"
-        twitter="Not Available"
-      />
+      <User user={user} />
+      <UserStats user={user} />
+      <Links user={user} />
     </Container>
   )
 }

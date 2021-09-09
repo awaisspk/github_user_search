@@ -1,12 +1,6 @@
 import { styled } from '@stitchesConfig'
+import { Idata } from 'src/types/Idata'
 import { UserAvatar } from './Avatar'
-interface IUser {
-  name: string
-  login: string
-  joined: string
-  avatar?: string
-  bio: string
-}
 
 const Flex = styled('div', {
   display: 'flex',
@@ -29,14 +23,16 @@ const InnerFlex = styled('div', {
   },
 })
 
-const User = ({ name, login, joined, avatar, bio }: IUser) => {
+const User = ({ user }: Idata) => {
+  const date = new Date(user.createdAt).toDateString()
+
   return (
     <Flex>
-      <UserAvatar />
+      <UserAvatar user={user} />
       <InnerFlex>
-        <h2>{name}</h2>
-        <p>@{login}</p>
-        <p>Joined {joined}</p>
+        <h2>{user.name}</h2>
+        <p>@{user.login}</p>
+        <p>Joined {date ? date : 'not found'}</p>
       </InnerFlex>
     </Flex>
   )
