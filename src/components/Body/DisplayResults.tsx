@@ -4,12 +4,6 @@ import UserStats from './UserStats'
 import Links from './Links'
 import { Idata } from '../../types/Idata'
 
-interface IUser {
-  name: string
-  login: string
-  bio: string
-}
-
 const Container = styled('div', {
   gridArea: 'content',
   alignSelf: 'stretch',

@@ -6,22 +6,22 @@ import { ChangeEvent, useEffect, useState } from 'react'
 import { useFetchUser } from '@lib/useFetchUser'
 
 const initialData = {
-  name: 'Nerd',
-  bio: '@nerd',
-  login: 'nerd',
-  createdAt: 'Thu Sep 09 2021',
+  name: '',
+  bio: '',
+  login: '',
+  createdAt: '',
   avatarUrl: '',
-  location: 'Neverland',
-  twitterUsername: 'not found',
-  websiteUrl: 'not found',
+  location: '',
+  twitterUsername: '',
+  websiteUrl: '',
   followers: {
-    totalCount: 10,
+    totalCount: 0,
   },
   following: {
-    totalCount: 1,
+    totalCount: 0,
   },
   repositories: {
-    totalCount: 10,
+    totalCount: 0,
   },
 }
 
