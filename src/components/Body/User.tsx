@@ -1,6 +1,6 @@
 import { styled } from '@stitchesConfig'
-import { Idata } from 'src/types/Idata'
 import { UserAvatar } from './Avatar'
+import { Idata } from 'src/types/Idata'
 
 const Flex = styled('div', {
   display: 'flex',
@@ -28,7 +28,7 @@ const User = ({ user }: Idata) => {
 
   return (
     <Flex>
-      <UserAvatar user={user} />
+      <UserAvatar imageSrc={user.avatarUrl} />
       <InnerFlex>
         <h2>{user.name}</h2>
         <p>@{user.login}</p>

@@ -5,26 +5,6 @@ import DisplayResults from '@components/Body/DisplayResults'
 import { ChangeEvent, useEffect, useState } from 'react'
 import { useFetchUser } from '@lib/useFetchUser'
 
-const initialData = {
-  name: '',
-  bio: '',
-  login: '',
-  createdAt: '',
-  avatarUrl: '',
-  location: '',
-  twitterUsername: '',
-  websiteUrl: '',
-  followers: {
-    totalCount: 0,
-  },
-  following: {
-    totalCount: 0,
-  },
-  repositories: {
-    totalCount: 0,
-  },
-}
-
 const Container = styled('section', {
   maxWidth: 'calc(600px + 2em)',
   margin: 'auto',
@@ -40,7 +20,7 @@ const Container = styled('section', {
 const Index = () => {
   const [username, setUsername] = useState('awaisspk')
   const [searchQuery, setSearchQuery] = useState(username)
-  const { isLoading, isError, error, data } = useFetchUser(searchQuery)
+  const { isLoading, isError, data, isFetching } = useFetchUser(searchQuery)
   useEffect(() => console.log(data))
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -59,13 +39,9 @@ const Index = () => {
         username={username}
         handleChange={handleChange}
         handleSubmit={handleSubmit}
-        loadingStatus={isLoading}
+        loadingStatus={isFetching}
       />
-      {typeof data === 'undefined' ? (
-        <DisplayResults user={initialData} />
-      ) : (
-        <DisplayResults user={data} />
-      )}
+      {data && <DisplayResults user={data} />}
     </Container>
   )
 }

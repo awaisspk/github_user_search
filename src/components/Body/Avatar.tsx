@@ -1,7 +1,6 @@
 import React from 'react'
 import { styled } from '@stitchesConfig'
 import * as AvatarPrimitive from '@radix-ui/react-avatar'
-import { Idata } from 'src/types/Idata'
 
 const StyledAvatar = styled(AvatarPrimitive.Root, {
   display: 'inline-flex',
@@ -49,10 +48,14 @@ export const AvatarFallback = StyledFallback
 // Your app...
 const Flex = styled('div', { display: 'flex' })
 
-const UserAvatar = ({ user }: Idata) => (
+type IImage = {
+  imageSrc: string
+}
+
+const UserAvatar = ({ imageSrc }: IImage) => (
   <Flex css={{ gap: 20 }}>
     <Avatar>
-      <AvatarImage src={user.avatarUrl} alt={user.name} />
+      <AvatarImage src={imageSrc} />
       <AvatarFallback delayMs={600}>Dev</AvatarFallback>
     </Avatar>
   </Flex>

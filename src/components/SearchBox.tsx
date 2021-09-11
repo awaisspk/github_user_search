@@ -29,9 +29,14 @@ const StyledInput = styled('input', {
   border: '0',
   backgroundColor: 'transparent',
   outline: 'none',
+  fontWeight: '500',
   padding: '0 2em 0 1em',
   flex: '2 1 stretch',
   width: '100%',
+
+  [`.${DarkTheme} &`]: {
+    color: 'White',
+  },
 })
 
 type IUser = {
